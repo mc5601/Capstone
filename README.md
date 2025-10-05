@@ -11,9 +11,6 @@ Field measurements for **air quality (PM2.5)** and **sound quality**.
 ---
 
 # Setup
-
-### 1) Install & configure (copy–paste this)
-```bash
 # 1) Install Python packages
 pip install pydrive2 oauth2client pandas numpy matplotlib
 
@@ -22,17 +19,19 @@ pip install pydrive2 oauth2client pandas numpy matplotlib
 # 👉 Ask MARTIN CELEDON for this file.
 
 # Save it OUTSIDE the repository (never in GitHub):
-#   Windows:       C:\Users\<you>\capstone_credentials.json
-#   macOS/Linux:   /Users/<you>/capstone_credentials.json   (or /home/<you>/capstone_credentials.json)
+#   Windows:    C:\Users\<you>\capstone_credentials.json
+#   macOS/Linux: /Users/<you>/capstone_credentials.json
+#                (or /home/<you>/capstone_credentials.json)
 
 # 3) Set the environment variable (macOS/Linux)
 export CAPSTONE_SA_JSON=~/capstone_credentials.json
 
-# 3b) Windows (PowerShell) — run this in PowerShell, not in bash:
-# $env:CAPSTONE_SA_JSON = "C:\Users\<you>\capstone_credentials.json"
+# 3b) Windows (PowerShell) – run this in PowerShell, not in bash:
+$env:CAPSTONE_SA_JSON = "C:\Users\<you>\capstone_credentials.json"
 
 # 4) How to run
 # Start Jupyter and open the notebook:
-jupyter lab   # or: jupyter notebook
+jupyter lab     # or: jupyter notebook
+
 # In Jupyter, open AQ_2.ipynb and run all cells in order.
 # The notebook uses CAPSTONE_SA_JSON to connect to Google Drive and load the data.
