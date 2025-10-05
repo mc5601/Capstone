@@ -10,7 +10,7 @@ Field measurements for **air quality (PM2.5)** and **sound quality**.
 
 ---
 
-## Setup
+# Setup
 
 ### 1) Install & configure (copy–paste this)
 ```bash
