@@ -6,10 +6,10 @@ The pipeline pulls **air-quality logs** (UPAS text files) from Google Drive, cle
 
 ---
 
-## 0) Get repo access & clone (GitHub)
+## 0) Clone the public repository (GitHub)
 
-1. **Accept the invite** to the GitHub repository from **Martin Celedón**.  
-2. **Sign in** (or create an account) at GitHub.  
+1. Open the repository’s public page on GitHub.
+2. Click **Code** → copy the HTTPS or SSH URL.
 3. **Clone** (choose one):
 
    **HTTPS**
@@ -106,13 +106,3 @@ Teams should upload their **air-quality logs** (UPAS text files) from the define
 - **Evening (≈ 19:00)**
 
 Keeping **consistent filenames** and **fixed routes** lets us compare by **time of day**, **route**, and **pollution peaks**.
-
-**Suggested filename pattern**
-
-
----
-
-## 🔜 Next steps (Noise / Sound)
-
-- Mirror the same pipeline for **noise logs** (sound level vs time).  
-- Keep the **same routes** and **similar times** so PM2.5 and noise can be analyzed **side-by-side** by route and time block.
