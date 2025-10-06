@@ -8,8 +8,8 @@ The pipeline pulls **air-quality logs** (UPAS text files) from Google Drive, cle
 
 ## 0) Clone the public repository (GitHub)
 
-1. Open the repository’s public page on GitHub.
-2. Click **Code** → copy the HTTPS or SSH URL.
+1. Open the repository’s public page on GitHub.  
+2. Click **Code** → copy the HTTPS or SSH URL.  
 3. **Clone** (choose one):
 
    **HTTPS**
@@ -86,7 +86,7 @@ You’ll need a **Google Drive service-account JSON key** to connect to the shar
    
        jupyter lab
 
-2. Open **`notebooks/AQ_2.5PM.ipynb`**.  
+2. Open **`Air_Q/2-5PM.ipynb`**.  
 3. Click **Run All**.
 
 The notebook will:
@@ -106,3 +106,54 @@ Teams should upload their **air-quality logs** (UPAS text files) from the define
 - **Evening (≈ 19:00)**
 
 Keeping **consistent filenames** and **fixed routes** lets us compare by **time of day**, **route**, and **pollution peaks**.
+
+**Suggested filename pattern**
+
+    AQ_<TEAM-or-DEVICE>_LOG_<YYYYMMDD>_<HHMMUTC>.txt
+    # Example: AQ_298_LOG_20241002_1600UTC.txt
+
+---
+
+## 📂 Repository layout (recommended)
+
+    <repo-root>/
+    ├─ Air_Q/
+    │  └─ 2-5PM.ipynb               # current air quality workflow (open this one)
+    ├─ data/
+    │  ├─ cache_air_quality/         # downloaded logs (auto-created)
+    │  └─ outputs/                   # cleaned CSVs / plots
+    ├─ docs/
+    │  └─ README_assets/             # images/diagrams for docs
+    ├─ .gitignore
+    └─ README.md
+
+**.gitignore additions**
+
+    *.json
+    data/cache_air_quality/
+    data/outputs/
+    .venv/
+    .ipynb_checkpoints/
+
+---
+
+## 🔧 Troubleshooting
+
+- **`CAPSTONE_SA_JSON not set`**  
+  Export the variable (Section 4) and restart the kernel.
+
+- **`FileNotFoundError: ...capstone_credentials.json`**  
+  Check the exact path and filename for your OS.
+
+- **Google Drive permission error**  
+  Ensure the **service-account email** has been granted access to the shared folder.
+
+- **No plots / empty outputs**  
+  Confirm logs were downloaded into `data/cache_air_quality/` and re-run **Run All** after fixing any environment issues.
+
+---
+
+## 🔜 Next steps (Noise / Sound)
+
+- Mirror the same pipeline for **noise logs** (sound level vs time).  
+- Keep the **same routes** and **similar times** so PM2.5 and noise can be analyzed **side-by-side** by route and time block.
