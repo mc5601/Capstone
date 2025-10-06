@@ -112,44 +112,6 @@ Keeping **consistent filenames** and **fixed routes** lets us compare by **time 
     AQ_<TEAM-or-DEVICE>_LOG_<YYYYMMDD>_<HHMMUTC>.txt
     # Example: AQ_298_LOG_20241002_1600UTC.txt
 
----
-
-## 📂 Repository layout (recommended)
-
-    <repo-root>/
-    ├─ Air_Q/
-    │  └─ 2-5PM.ipynb               # current air quality workflow (open this one)
-    ├─ data/
-    │  ├─ cache_air_quality/         # downloaded logs (auto-created)
-    │  └─ outputs/                   # cleaned CSVs / plots
-    ├─ docs/
-    │  └─ README_assets/             # images/diagrams for docs
-    ├─ .gitignore
-    └─ README.md
-
-**.gitignore additions**
-
-    *.json
-    data/cache_air_quality/
-    data/outputs/
-    .venv/
-    .ipynb_checkpoints/
-
----
-
-## 🔧 Troubleshooting
-
-- **`CAPSTONE_SA_JSON not set`**  
-  Export the variable (Section 4) and restart the kernel.
-
-- **`FileNotFoundError: ...capstone_credentials.json`**  
-  Check the exact path and filename for your OS.
-
-- **Google Drive permission error**  
-  Ensure the **service-account email** has been granted access to the shared folder.
-
-- **No plots / empty outputs**  
-  Confirm logs were downloaded into `data/cache_air_quality/` and re-run **Run All** after fixing any environment issues.
 
 ---
 
