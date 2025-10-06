@@ -86,7 +86,7 @@ You’ll need a **Google Drive service-account JSON key** to connect to the shar
    
        jupyter lab
 
-2. Open **`notebooks/AQ_2.ipynb`**.  
+2. Open **`notebooks/AQ_2.5PM.ipynb`**.  
 3. Click **Run All**.
 
 The notebook will:
