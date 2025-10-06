@@ -1,83 +1,118 @@
-# Capstone (Fall 2025) — Environmental Data Analysis  
+# Capstone (Fall 2025) — Environmental Data Analysis
 **Field measurements for air quality (PM2.5) and sound quality**
 
----
-
-## 🧠 What this project does  
-This project helps analyze **real field data** collected for air quality and noise levels along defined routes.  
-
-- Connects to a **shared Google Drive folder** with UPAS device logs for **air quality (PM2.5)**.  
-- Reads each log file, **cleans errors**, and extracts PM2.5 concentrations.  
-- Combines all logs into one clean table for analysis.  
-- Lets you **plot PM2.5 vs. time** (by date/hour) and later integrate **sound data**.  
-
-The same structure will be used for **sound quality (noise)** so both datasets align by route and time.
+Analyze **real field data** collected along defined routes.  
+The pipeline pulls **air-quality logs** (UPAS text files) from Google Drive, cleans them, merges everything into a tidy table, and plots **PM2.5 vs time**. The same structure will be mirrored for **noise (sound)** so both datasets align by **route** and **time**.
 
 ---
 
-## ⚙️ Setup
+## 0) Get repo access & clone (GitHub)
 
-### 1️⃣ Install Python packages
+1. **Accept the invite** to the GitHub repository from **Martin Celedón**.  
+2. **Sign in** (or create an account) at GitHub.  
+3. **Clone** (choose one):
+
+   **HTTPS**
+   
+       git clone https://github.com/<org-or-user>/<repo-name>.git
+       cd <repo-name>
+
+   **SSH**
+   
+       # Add your SSH key to GitHub first (Settings → SSH and GPG keys)
+       git clone git@github.com:<org-or-user>/<repo-name>.git
+       cd <repo-name>
+
+4. *(Recommended)* Create & activate a virtual environment:
+
+   **macOS/Linux**
+   
+       python3 -m venv .venv
+       source .venv/bin/activate
+
+   **Windows (PowerShell)**
+   
+       py -3 -m venv .venv
+       .\.venv\Scripts\Activate.ps1
+
+> 🔒 **Never commit secrets.** Keep credentials **outside** the repo. A `.gitignore` entry helps, but do not add keys to Git, ever.
+
+---
+
+## 1) Install Python packages
+
     pip install pydrive2 oauth2client pandas numpy matplotlib
 
 ---
 
-### 2️⃣ Get your Google Drive key
+## 2) Get your Google Drive key
+
 You’ll need a **Google Drive service-account JSON key** to connect to the shared folder.  
-👉 **Ask Martin Celedón** for this file.
+👉 Ask **Martin Celedón** for this file.
 
 ---
 
-### 3️⃣ Save the key securely
-Save the JSON file **outside this repository** (never upload it to GitHub):
+## 3) Save the key securely (outside the repo)
 
-- **Windows:**  
-  `C:\Users\<you>\capstone_credentials.json`
+**Windows**
 
-- **macOS / Linux:**  
-  `/Users/<you>/capstone_credentials.json`  
-  (or `/home/<you>/capstone_credentials.json`)
+    C:\Users\<you>\capstone_credentials.json
+
+**macOS / Linux**
+
+    /Users/<you>/capstone_credentials.json
+    # or
+    /home/<you>/capstone_credentials.json
 
 ---
 
-### 4️⃣ Set the environment variable
+## 4) Set the environment variable
 
-**macOS / Linux:**
+**macOS / Linux**
+
     export CAPSTONE_SA_JSON=~/capstone_credentials.json
 
-**Windows (PowerShell):**
+**Windows (PowerShell)**
+
     $env:CAPSTONE_SA_JSON = "C:\Users\<you>\capstone_credentials.json"
 
+*(Tip: add that line to your shell profile so it’s set automatically next time.)*
+
 ---
 
-## ▶️ How to Run
+## ▶️ Run the notebook
 
-1. Open Jupyter Lab or Notebook:
-    
-        jupyter lab
+1. Start Jupyter:
+   
+       jupyter lab
 
-2. In Jupyter, open **`AQ_2.ipynb`**.  
-3. Click **Run All Cells**.
+2. Open **`notebooks/AQ_2.ipynb`**.  
+3. Click **Run All**.
 
 The notebook will:
-- Connect to Google Drive using your service-account key.  
-- Download all UPAS log files (`*_LOG_*.txt`).  
-- Parse and clean the data.  
-- Generate plots of **PM2.5 vs. time** and summarize by route (morning, afternoon, evening).
+- Authenticate with Google Drive via your service-account key.  
+- Download all **air-quality log** files (`*_LOG_*.txt`) to a local cache.  
+- Parse, clean, and merge the data.  
+- Plot **PM2.5 vs time** and produce summaries by route (morning / afternoon / evening).
 
 ---
 
-## 🗺️ Fieldwork Integration
-Each team uploads their UPAS logs from defined sampling routes:
+## 🗺️ Fieldwork integration (routes & timing)
 
-- **Morning (≈11 AM)**  
-- **Afternoon (≈2 PM)**  
-- **Evening (≈7 PM)**
+Teams should upload their **air-quality logs** (UPAS text files) from the defined sampling routes:
 
-By keeping consistent filenames and routes, all results can later be compared by **time of day**, **route**, and **pollution peaks**.
+- **Morning (≈ 11:00)**
+- **Afternoon (≈ 14:00)**
+- **Evening (≈ 19:00)**
+
+Keeping **consistent filenames** and **fixed routes** lets us compare by **time of day**, **route**, and **pollution peaks**.
+
+**Suggested filename pattern**
+
 
 ---
 
-## 📂 Folder Structure
-To keep everything organized, follow this structure inside the repository:
+## 🔜 Next steps (Noise / Sound)
 
+- Mirror the same pipeline for **noise logs** (sound level vs time).  
+- Keep the **same routes** and **similar times** so PM2.5 and noise can be analyzed **side-by-side** by route and time block.
