@@ -1,0 +1,5 @@
+*.json
+data/cache_air_quality/
+data/outputs/
+.venv/
+.ipynb_checkpoints/
